@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Cashless Tickets",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

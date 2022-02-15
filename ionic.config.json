@@ -1,0 +1,7 @@
+{
+  "name": "Cashless Tickets",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
