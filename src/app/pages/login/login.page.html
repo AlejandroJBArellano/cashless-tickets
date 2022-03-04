@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text color="success">
+    <h2>Pin</h2>
+  </ion-text>
+    <h2>{{pin}}</h2>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="addNumber(1)" fill="outline" shape="round" color="success">
+          1
+        </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="addNumber(2)" fill="outline" shape="round" color="success">
+          2
+        </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="addNumber(3)" fill="outline" shape="round" color="success">
+          3
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="addNumber(4)" fill="outline" shape="round" color="success">
+          4
+        </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="addNumber(5)" fill="outline" shape="round" color="success">
+          5
+        </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="addNumber(6)" fill="outline" shape="round" color="success">
+          6
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="addNumber(7)" fill="outline" shape="round" color="success">
+          7
+        </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="addNumber(8)" fill="outline" shape="round" color="success">
+          8
+        </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="addNumber(9)" fill="outline" shape="round" color="success">
+          9
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="addNumber(0)" fill="outline" shape="round" color="success">
+          0
+        </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="deleteNumber()" fill="outline" shape="round" color="success">
+          <ion-icon name="backspace-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="block" fill="solid" shape="round" color="success" (click)="enter()">
+          Entrar <ion-icon name="log-in-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

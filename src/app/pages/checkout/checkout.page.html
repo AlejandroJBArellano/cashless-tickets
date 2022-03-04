@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="backToMenu()" expand="block" fill="clear" shape="round" color="danger">
+        X
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Checkout</ion-title>
+  </ion-toolbar>
+</ion-header>
+<!-- lista como ticket para checkout y los botones de cancelar, pagar con tarjeta y efectivo -->
+<ion-content>
+  <ion-grid fixed>
+    <ion-card>
+      <ion-row>
+        <ion-col size="9">
+          <ion-row>
+            <ion-col size-sm="6" size-md="2" *ngFor="let item of checkout">
+              <ion-chip (click)="deleteItem(item)" [style]="'background-color:' + item.colorHex" mode="ios" outline="true">
+                <ion-label>
+                  {{item.name}}
+                  {{item.price | currency}}
+                </ion-label>
+                <ion-icon name="close-circle"></ion-icon>
+              </ion-chip>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="3">
+          <ion-button (click)="payCheckout('Tarjeta')" expand="block" fill="clear" shape="round">
+            Pago con tarjeta
+          </ion-button>
+          <ion-button (click)="payCheckout('Efectivo')" expand="block" fill="clear" shape="round">
+            Pago en efectivo
+          </ion-button>
+          <ion-button (click)="backToMenu()" expand="block" fill="clear" shape="round" color="danger">
+            Cancelar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card *ngIf="returningMessage">
+      <ion-card-header>
+        <ion-card-title>{{returningMessage}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </ion-grid>
+</ion-content>
