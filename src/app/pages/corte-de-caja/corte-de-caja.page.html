@@ -33,60 +33,18 @@
             <ion-col size="12">
               Efectivo real: {{inputEfectivoReal | currency}}
             </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                1
+            <ion-col size="4" *ngFor="let number of numbersKeyboard">
+              <ion-button (click)="addNumberEfectivoReal(number)" expand="block" fill="solid" shape="round" *ngIf="number">
+                {{number}}
               </ion-button>
             </ion-col>
             <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                2
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                3
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                4
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                5
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                6
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                7
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                8
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                9
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
+              <ion-button (click)="addNumberEfectivoReal(0)" expand="block" fill="solid" shape="round">
                 0
               </ion-button>
             </ion-col>
             <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
+              <ion-button (click)="deleteDigit(inputEfectivoReal, 'inputEfectivoReal')" expand="block" fill="solid" shape="round">
                 <ion-icon name="backspace-outline"></ion-icon>
               </ion-button>
             </ion-col>
@@ -99,66 +57,24 @@
             <ion-col size="12">
               <ion-item>
                 <ion-label>Retiro o abono: {{retiroOAbono | currency}}</ion-label>
-                <ion-select value="Retirar" multiple="true" placeholder="Seleccionar operación">
-                  <ion-select-option value="retirar">Peperoni</ion-select-option>
-                  <ion-select-option value="abonar">Hawaii</ion-select-option>
+                <ion-select value="retirar" [(ngModel)]="optionRetiroOabono" placeholder="Seleccionar operación">
+                  <ion-select-option value="retirar">Retirar</ion-select-option>
+                  <ion-select-option value="abonar">Abonar</ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                1
+            <ion-col size="4" *ngFor="let number of numbersKeyboard">
+              <ion-button (click)="addNumberToRetitoOAbono(number)" expand="block" fill="solid" shape="round" *ngIf="number">
+                {{number}}
               </ion-button>
             </ion-col>
             <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                2
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                3
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                4
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                5
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                6
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                7
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                8
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
-                9
-              </ion-button>
-            </ion-col>
-            <ion-col size="4">
-            </ion-col>
-            <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
+              <ion-button (click)="addNumberToRetitoOAbono(0)" expand="block" fill="solid" shape="round">
                 0
               </ion-button>
             </ion-col>
             <ion-col size="4">
-              <ion-button expand="block" fill="solid" shape="round">
+              <ion-button (click)="deleteDigit(retiroOAbono, 'retiroOAbono')" expand="block" fill="solid" shape="round">
                 <ion-icon name="backspace-outline"></ion-icon>
               </ion-button>
             </ion-col>

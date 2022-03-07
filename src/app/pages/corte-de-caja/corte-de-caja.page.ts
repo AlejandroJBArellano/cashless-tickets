@@ -25,7 +25,8 @@ export class CorteDeCajaPage implements OnInit {
   inputEfectivoReal = 0;
   retiroOAbono = 0;
   corte: CorteDeCaja;
-
+  numbersKeyboard: number[] = [1,2,3,4,5,6,7,8,9, ,]
+  optionRetiroOabono = ""
   constructor(private checkService: CheckoutService,
     private router: NavController,
     private session: AuthService,
@@ -89,5 +90,23 @@ export class CorteDeCajaPage implements OnInit {
     // eslint-disable-next-line no-underscore-dangle
     const orderFounded: Order = this.orders.find(order => order._id === _id);
     orderFounded.showOrder = !orderFounded.showOrder;
+  }
+  addNumberEfectivoReal(number: any){
+    const input = this.inputEfectivoReal.toString() + number
+    this.inputEfectivoReal = parseInt(input)
+  }
+  addNumberToRetitoOAbono(number: any){
+    const input = this.retiroOAbono.toString() + number;
+    this.retiroOAbono = parseInt(input)
+    if(this.optionRetiroOabono === "retirar"){
+      if(this.retiroOAbono > 0){
+        this.retiroOAbono *= -1
+      }
+    }
+  }
+  deleteDigit(inputToChange:number, property: string){
+    console.log('inputToChange', inputToChange)
+    const input = inputToChange.toString().slice(0, -1);
+    this[property] = input.length === 0 ? 0 : parseInt(input)
   }
 }
