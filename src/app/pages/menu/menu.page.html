@@ -1,11 +1,22 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      <h1>Menú</h1>
-      <ion-button (click)="logOut()" fill="clear" shape="round">
-        <ion-icon name="log-in-outline"></ion-icon>
-        <ion-label>Cerrar sesión</ion-label>
-      </ion-button>
+      <ion-grid>
+        <ion-row class="ion-justify-content-end">
+          <ion-col size="8">
+            <h1>Menú</h1>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button (click)="logOut()" fill="outline" shape="round" color="danger">
+              <ion-icon name="log-in-outline"></ion-icon>
+              <ion-label>Cerrar sesión</ion-label>
+            </ion-button>
+            <ion-button (click)="goToRoute('corte-de-caja')" fill="solid" shape="round" color="success">
+              Corte de Caja
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-title>
   </ion-toolbar>
 </ion-header>

@@ -6,9 +6,11 @@
 
 <ion-content>
   <ion-text color="success">
-    <h2>Pin</h2>
+    <ion-title>Ingresa tu pin: </ion-title>
   </ion-text>
-    <h2>{{pin}}</h2>
+  <ion-text color="success">
+    <ion-title class="pin">{{pin || 0}}</ion-title>
+  </ion-text>
   <ion-grid fixed>
     <ion-row>
       <ion-col size="4">

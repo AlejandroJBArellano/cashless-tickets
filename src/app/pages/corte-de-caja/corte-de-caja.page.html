@@ -57,9 +57,9 @@
             <ion-col size="12">
               <ion-item>
                 <ion-label>Retiro o abono: {{retiroOAbono | currency}}</ion-label>
-                <ion-select value="retirar" [(ngModel)]="optionRetiroOabono" placeholder="Seleccionar operación">
+                <ion-select value="abonar" [(ngModel)]="optionRetiroOabono" placeholder="Seleccionar operación">
                   <ion-select-option value="retirar">Retirar</ion-select-option>
-                  <ion-select-option value="abonar">Abonar</ion-select-option>
+                  <ion-select-option selected value="abonar">Abonar</ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-col>

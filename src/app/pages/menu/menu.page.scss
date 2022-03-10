@@ -1,0 +1,28 @@
+ion-header{
+  ion-toolbar{
+    ion-title{
+      ion-grid{
+        ion-row{
+          ion-col{
+            ion-button{
+              float: right;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+ion-grid{
+  ion-row{
+    ion-col{
+      ion-card{
+        ion-card-header{
+          ion-card-subtitle{
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

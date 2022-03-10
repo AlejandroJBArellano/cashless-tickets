@@ -1,7 +1,12 @@
 ion-content{
   ion-text{
-    h2, p{
+    ion-title{
       text-align: center;
+      font-size: 40px;
+      &.pin{
+        font-size: 60px;
+        margin: 20px;
+      }
     }
   }
 }

@@ -26,7 +26,7 @@ export class CorteDeCajaPage implements OnInit {
   retiroOAbono = 0;
   corte: CorteDeCaja;
   numbersKeyboard: number[] = [1,2,3,4,5,6,7,8,9, ,]
-  optionRetiroOabono = ""
+  optionRetiroOabono = "abonar"
   constructor(private checkService: CheckoutService,
     private router: NavController,
     private session: AuthService,
@@ -105,7 +105,6 @@ export class CorteDeCajaPage implements OnInit {
     }
   }
   deleteDigit(inputToChange:number, property: string){
-    console.log('inputToChange', inputToChange)
     const input = inputToChange.toString().slice(0, -1);
     this[property] = input.length === 0 ? 0 : parseInt(input)
   }

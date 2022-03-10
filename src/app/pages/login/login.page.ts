@@ -16,12 +16,13 @@ export class LoginPage implements OnInit {
     this.pin = '';
   }
 
-  ngOnInit() {
+  ngOnInit(){
   }
   addNumber(cuantity){
     this.pin += cuantity;
   }
   enter(){
+    console.log(this.pin)
     if(this.pin.length !== 4){
       alert('los pines tienen 4 dígitos');
       return;

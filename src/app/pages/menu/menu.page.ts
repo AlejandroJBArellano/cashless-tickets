@@ -79,4 +79,7 @@ export class MenuPage implements ViewDidEnter {
       });
     });;
   }
+  goToRoute(route: string){
+    this.router.navigateByUrl(`/${route}`)
+  }
 }
