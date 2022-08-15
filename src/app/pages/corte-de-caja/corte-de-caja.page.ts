@@ -18,7 +18,7 @@ export class CorteDeCajaPage implements OnInit {
   user: User | null = null;
   checkouts = [0];
   totalInBox = 0;
-  ip = '';
+  ip = '123.123.123';
   ultimoCorteDeCaja: any = {};
   dataApi: any = {};
   orders: Order[] = [];
@@ -33,15 +33,15 @@ export class CorteDeCajaPage implements OnInit {
     private corteService: CorteDeCajaService) { }
 
   ngOnInit() {
-    this.session.getIpAdress().subscribe(
-      (res: any) => {
-        this.ip = res.ip;
+    // this.session.getIpAdress().subscribe(
+    //   (res: any) => {
+    //     this.ip = res.ip;
         this.session.getUser().then(
           user => {
             this.user = user;
           }
         );
-        this.corteService.getCalculo(this.ip).subscribe(
+        this.corteService.getCalculo("123.123.123").subscribe(
           (response: any) => {
             this.ultimoCorteDeCaja = response.ultimoCorteDeCaja;
             if(!this.ultimoCorteDeCaja){
@@ -61,8 +61,8 @@ export class CorteDeCajaPage implements OnInit {
             console.log(this.orders, this.dataApi);
           }
         );
-      }
-    );
+      // }
+    // );
   }
   hacerCorte(){
     this.corte = {
@@ -107,5 +107,21 @@ export class CorteDeCajaPage implements OnInit {
   deleteDigit(inputToChange:number, property: string){
     const input = inputToChange.toString().slice(0, -1);
     this[property] = input.length === 0 ? 0 : parseInt(input)
+  }
+  backToMenu(){
+    this.router.navigateBack('/menu');
+  }
+  onChangeRetiroOAbono(){
+    console.log('onChangeRetiroOAbono', this.optionRetiroOabono)
+    // This function executes before the value changes
+    if(this.optionRetiroOabono === "abonar"){
+      if(this.retiroOAbono > 0){
+        this.retiroOAbono *= -1
+      }
+    } else {
+      if(this.retiroOAbono < 0){
+        this.retiroOAbono *= -1
+      }
+    }
   }
 }

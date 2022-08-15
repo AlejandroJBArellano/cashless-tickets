@@ -1,5 +1,10 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="backToMenu()" expand="block" fill="clear" shape="round" color="danger">
+        X
+      </ion-button>
+    </ion-buttons>
     <ion-title>Corte de caja</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -57,7 +62,7 @@
             <ion-col size="12">
               <ion-item>
                 <ion-label>Retiro o abono: {{retiroOAbono | currency}}</ion-label>
-                <ion-select value="abonar" [(ngModel)]="optionRetiroOabono" placeholder="Seleccionar operación">
+                <ion-select value="abonar" (ngModelChange)="onChangeRetiroOAbono()" [(ngModel)]="optionRetiroOabono" placeholder="Seleccionar operación">
                   <ion-select-option value="retirar">Retirar</ion-select-option>
                   <ion-select-option selected value="abonar">Abonar</ion-select-option>
                 </ion-select>

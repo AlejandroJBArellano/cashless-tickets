@@ -11,29 +11,30 @@
 <!-- lista como ticket para checkout y los botones de cancelar, pagar con tarjeta y efectivo -->
 <ion-content>
   <ion-grid fixed>
-    <ion-card>
+    <ion-card >
       <ion-row>
         <ion-col size="9">
-          <ion-row>
-            <ion-col size-sm="6" size-md="2" *ngFor="let item of checkout">
-              <ion-chip (click)="deleteItem(item)" [style]="'background-color:' + item.colorHex" mode="ios" outline="true">
-                <ion-label>
-                  {{item.name}}
-                  {{item.price | currency}}
-                </ion-label>
-                <ion-icon name="close-circle"></ion-icon>
-              </ion-chip>
-            </ion-col>
-          </ion-row>
+          <ion-list>
+            <ion-chip *ngFor="let item of checkout" (click)="deleteItem(item)" [style]="'background-color:' + item.colorHex" mode="ios" outline="true">
+              <ion-label>
+                {{item.name}}
+                {{item.price | currency}}
+              </ion-label>
+              <ion-icon name="close-circle"></ion-icon>
+            </ion-chip>
+          </ion-list>
         </ion-col>
         <ion-col size="3">
-          <ion-button (click)="payCheckout('Tarjeta')" expand="block" fill="clear" shape="round">
+          <ion-button expand="block" fill="clear" shape="round" color="success">
+            Total: {{total | currency}}
+          </ion-button>
+          <ion-button *ngIf="!processingCheckout" (click)="payCheckout('Tarjeta')" expand="block" fill="clear" shape="round">
             Pago con tarjeta
           </ion-button>
-          <ion-button (click)="payCheckout('Efectivo')" expand="block" fill="clear" shape="round">
+          <ion-button *ngIf="!processingCheckout" (click)="payCheckout('Efectivo')" expand="block" fill="clear" shape="round">
             Pago en efectivo
           </ion-button>
-          <ion-button (click)="backToMenu()" expand="block" fill="clear" shape="round" color="danger">
+          <ion-button *ngIf="!processingCheckout" (click)="backToMenu()" expand="block" fill="clear" shape="round" color="danger">
             Cancelar
           </ion-button>
         </ion-col>
