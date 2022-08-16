@@ -28,7 +28,13 @@ export class LoginPage implements OnInit {
       return;
     }
     this.auth.findUser(this.pin).subscribe(
-      async res => {
+      async (res: any)=> {
+        if(!res._id){
+          this.pin = "";
+          alert("Pin incorrecto");
+          return;
+        }
+
         await this.auth.setUser(res);
         this.router.navigateByUrl('/menu');
       }

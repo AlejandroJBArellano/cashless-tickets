@@ -47,6 +47,10 @@ export class CheckoutPage implements  ViewDidEnter {
     this.checkout = this.checkout.filter(eCheckout => eCheckout.checkoutId !== item.checkoutId);
     await this.checkoutService.goToCheckout(this.checkout);
     if(this.checkout.length === 0) {this.backToMenu();}{}
+    this.total = 0;
+    for (const item of this.checkout) {
+      this.total += item.price
+    }
   }
 
   backToMenu(){
