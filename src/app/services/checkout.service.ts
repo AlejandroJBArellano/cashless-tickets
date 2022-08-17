@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
+import { environment } from 'src/environments/environment';
 import Item from '../types/Item';
 import Order from '../types/Order';
 import { AuthService } from './auth.service';
@@ -9,6 +10,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class CheckoutService {
+  public api = environment.api;
 
   private checkoutStorage: Storage | null = null;
 
@@ -27,7 +29,7 @@ export class CheckoutService {
   }
   public async payCheckout(order: Order){
     await this.goToCheckout([]);
-    return this.http.post('http://localhost:3000/order', order).toPromise();
+    return this.http.post(this.api + '/order', order).toPromise();
   }
   public async goToCheckout(checkout: Item[]){
     await this.conditionalStorage();

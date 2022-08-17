@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ViewDidEnter } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { CheckoutService } from 'src/app/services/checkout.service';
+import { TerminalService } from 'src/app/services/terminal.service';
 import Item from 'src/app/types/Item';
 
 @Component({
@@ -17,7 +18,8 @@ export class MenuPage implements ViewDidEnter {
   totalToPay: any = 0; // apply reduce
   constructor(private auth: AuthService,
   private router: Router,
-  private checkoutService: CheckoutService) { }
+  private checkoutService: CheckoutService,
+  private terminal: TerminalService) { }
 
   ionTabsDidChange(){
     console.log('IonTabsDidChange');
@@ -60,6 +62,7 @@ export class MenuPage implements ViewDidEnter {
   }
   async logOut(){
     await this.auth.logOut();
+    await this.terminal.removeTerminal();
     this.router.navigateByUrl('/login');
   }
   async payCheckout(){

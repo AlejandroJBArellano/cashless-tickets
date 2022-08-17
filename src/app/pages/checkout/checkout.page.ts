@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NavController, ViewDidEnter } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { CheckoutService } from 'src/app/services/checkout.service';
+import { TerminalService } from 'src/app/services/terminal.service';
 import Item from 'src/app/types/Item';
 import Order from 'src/app/types/Order';
 import User from 'src/app/types/User';
@@ -20,16 +21,16 @@ export class CheckoutPage implements  ViewDidEnter {
   public total: number = 0;
   constructor(private checkoutService: CheckoutService,
   private auth: AuthService,
-  private navController: NavController,
-  private router: Router) { }
+  private router: Router,
+  private terminalService: TerminalService) { }
   public processingCheckout = false
 
   ionViewDidEnter() {
-    // this.auth.getIpAdress().subscribe((res: {ip: string}) => {
-    //   this.terminal = res.ip;
-    // });
-
-    this.terminal = "123.123.123"
+    this.terminalService.getTerminal().then((res) => {
+      this.terminal = res
+    }).catch((e) => {
+      console.log(e);
+    });
     this.auth.getUser().then(async e => {
       this.user = e;
       this.checkoutService.getCheckout().then(checkout => {

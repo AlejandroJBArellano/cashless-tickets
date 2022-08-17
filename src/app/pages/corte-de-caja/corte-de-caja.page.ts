@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { CorteDeCajaService } from 'src/app/services/corte-de-caja.service';
+import { TerminalService } from 'src/app/services/terminal.service';
 import CorteDeCaja from 'src/app/types/CorteDeCaja';
 import Item from 'src/app/types/Item';
 import Order from 'src/app/types/Order';
@@ -27,48 +28,46 @@ export class CorteDeCajaPage implements OnInit {
   corte: CorteDeCaja;
   numbersKeyboard: number[] = [1,2,3,4,5,6,7,8,9, ,]
   optionRetiroOabono = "abonar"
+  terminal = ""
   constructor(private checkService: CheckoutService,
     private router: NavController,
     private session: AuthService,
-    private corteService: CorteDeCajaService) { }
+    private corteService: CorteDeCajaService,
+    private terminalService: TerminalService) { }
 
-  ngOnInit() {
-    // this.session.getIpAdress().subscribe(
-    //   (res: any) => {
-    //     this.ip = res.ip;
-        this.session.getUser().then(
-          user => {
-            this.user = user;
-          }
-        );
-        this.corteService.getCalculo("123.123.123").subscribe(
-          (response: any) => {
-            this.ultimoCorteDeCaja = response.ultimoCorteDeCaja;
-            if(!this.ultimoCorteDeCaja){
-              this.ultimoCorteDeCaja = {
-                saldoFinalEfectivo: 0
-              };
-            }
-            this.dataApi = response;
-            this.orders = this.dataApi.ventasConsideradas.map((e: Order)=>{
-              let total = 0;
-              e.items.forEach((el: Item) => {
-                total += el.price;
-              });
-              e.total = total;
-              return e;
-            });
-            console.log(this.orders, this.dataApi);
-          }
-        );
-      // }
-    // );
+  async ngOnInit() {
+    this.terminal = await this.terminalService.getTerminal()
+    this.session.getUser().then(
+      user => {
+        this.user = user;
+      }
+    );
+    this.corteService.getCalculo(this.terminal).subscribe(
+      (response: any) => {
+        this.ultimoCorteDeCaja = response.ultimoCorteDeCaja;
+        if(!this.ultimoCorteDeCaja){
+          this.ultimoCorteDeCaja = {
+            saldoFinalEfectivo: 0
+          };
+        }
+        this.dataApi = response;
+        this.orders = this.dataApi.ventasConsideradas.map((e: Order)=>{
+          let total = 0;
+          e.items.forEach((el: Item) => {
+            total += el.price;
+          });
+          e.total = total;
+          return e;
+        });
+        console.log(this.orders, this.dataApi);
+      }
+    );
   }
   hacerCorte(){
     this.corte = {
       ordenesEfectivo: this.dataApi.ventasConsideradas,
       saldoInicialEfectivo: this.ultimoCorteDeCaja,
-      terminal: this.ip,
+      terminal: this.terminal,
       user: {
         profileName: this.user.profile.profileName,
         completeName: this.user.completeName,

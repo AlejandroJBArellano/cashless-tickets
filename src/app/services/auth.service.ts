@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import {HttpClient} from '@angular/common/http';
 import User from '../types/User';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import User from '../types/User';
 export class AuthService {
 
   private sessionStorage: Storage | null = null;
+  public api = environment.api
 
   constructor(private storage: Storage,
     private http: HttpClient) { }
@@ -25,7 +27,7 @@ export class AuthService {
   }
 
   public findUser(pin: string){
-    return this.http.get('http://localhost:3000/user-pin', {
+    return this.http.get(this.api + '/user-pin', {
       params: {
         pin
       }

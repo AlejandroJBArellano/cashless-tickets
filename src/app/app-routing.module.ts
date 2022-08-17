@@ -27,6 +27,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/menu/menu.module').then(m => m.MenuPageModule),
     canActivate: [AuthGuardService]
   },
+  {
+    path: 'terminal',
+    loadChildren: () => import('./pages/terminal/terminal.module').then( m => m.TerminalPageModule)
+  },
 ];
 @NgModule({
   imports: [
