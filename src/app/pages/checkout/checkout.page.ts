@@ -14,6 +14,8 @@ import User from 'src/app/types/User';
 })
 export class CheckoutPage implements  ViewDidEnter {
 
+  public readonly XD = "XDXDXD"
+
   public checkout: Item[] = [];
   public user: User;
   public returningMessage: string;
